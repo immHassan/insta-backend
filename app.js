@@ -7,7 +7,13 @@ var cookie =
   'mid=ZdborwAEAAEvFalZ2_gfYGlgRqol; ps_l=0; ps_n=0; ig_did=9B6B8A78-5902-4E34-BAF8-E2DF6535FEE9; datr=r-jWZbombvttNS-AA4qmB1GT; ig_nrcb=1; ig_lang=en-gb; csrftoken=UiUWUckgdmDymPU8N6fYvjll7ykMOpf6; ds_user_id=65290888848; sessionid=65290888848%3AfAbDTfzodDnYvs%3A0%3AAYfRui3EJUNf-2hzODDve0_bqedPvOKDOKhnliIwKw; rur="LDC\05465290888848\0541740123295:01f793aabf0f72309d226603ba6e291c205bed26e70d34edbfbdb647c174eb1111bb6de4"';
 
 var userAgents = [
-  "Mozilla/5.0 (Linux; Android 12; P60 Build/SP1A.210812.016; wv) AppleWebKit/537.36 (KHTML, like Gecko) Version/4.0 Chrome/118.0.0.0 Mobile Safari/537.36 Instagram 308.0.0.36.109 Android (31/12; 320dpi; 720x1468; CUBOT; P60; P60; mt6765; es_ES; 534961953)",
+  "Mozilla/5.0 (Linux; Android 12; P60 Build/SP1A.210812.016; wv) AppleWebKit/537.36 (KHTML, like Gecko) Version/4.0 Chrome/118.0.0.0 Mobile Safari/537.36 Instagram 308.0.0.36.109 Android (31/12; 320dpi; 720x1468; CUBOT; P60; P60; mt6765; es_ES; 534961953)"
+];
+
+
+
+/*
+,
   "Mozilla/5.0 (Linux; U; Android 4.3; ru-ru; Z10 Build/10.3.3.213) AppleWebKit/534.30 (KHTML, like Gecko) Version/4.0 Mobile Safari/534.30 Instagram 9.1.0 Android (18/4.3; 320dpi; 768x1174; RIM/BlackBerry; Z10; Z10; STL100-3; ru_RU)",
   "Instagram 151.0.0.29.119(V20) Android (30/11; 480dpi; 1080x2139; OPPO; CPH2068; OP4C6BL1; qcom; en_US; 185203693)	",
   "Instagram 64.0.0.14.96 Android (29/10; 225dpi; 1080x2158; realme; RMX3122; RMX3122; mt6833; in_ID)	",
@@ -27,8 +33,7 @@ var userAgents = [
   "Mozilla/5.0 (Linux; Android 7.0; A140 Build/NRD90M; wv) AppleWebKit/537.36 (KHTML, like Gecko) Version/4.0 Chrome/119.0.6045.193 Safari/537.36 Instagram 313.0.0.26.328 Android (24/7.0; 240dpi; 1200x1848; A140; A140; A140; mt6735; de_DE; 554218466)	",
   "Instagram 315.0.0.29.109 Android (33/13; 320dpi; 720x1459; TCL; T610K; Model_3; mt6765; es_ES; 558601268)	",
   "Mozilla/5.0 (Linux; Android 12; PEPM00 Build/OPPOPEPM00;) AppleWebKit/537.36 (KHTML, like Gecko) Version/4.0 Chrome/99.0.4844.88 Safari/537.36 Instagram 312.1.0.34.111 Android (31/12; 300dpi; 1440x2200; OPPO; PEPM00; OP4ECB; qcom; ar_SA; 548323749)	",
-];
-
+    */
 var currentUserAgent = 0;
 
 var userAgentLimit = userAgents.length;
