@@ -45,10 +45,12 @@ var requestCount = 0;
 // To get Data from instagram user Id
 app.get("/api/instagram/user-pictures/:userId", async (req, res) => {
 
-  requestCount = requestCount+1;
+  requestCount = requestCount++;
 
+
+  console.log(requestCount);
   if(requestCount => 20){
-    await new Promise(resolve => setTimeout(resolve, 60000));
+    await new Promise(resolve => setTimeout(resolve, 8000));
     requestCount = 0;
   }
 
@@ -97,10 +99,11 @@ app.get("/api/instagram/user-pictures/:userId", async (req, res) => {
 app.get("/api/instagram/user-id/:userName", async (req, res) => {
   
 
-  requestCount = requestCount+1;
+  requestCount = requestCount++;
 
+  console.log(requestCount);
   if(requestCount => 20){
-    await new Promise(resolve => setTimeout(resolve, 60000));
+    await new Promise(resolve => setTimeout(resolve, 8000));
     requestCount = 0;
   }
 
