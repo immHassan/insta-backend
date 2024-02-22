@@ -38,6 +38,10 @@ var currentUserAgent = 0;
 
 var userAgentLimit = userAgents.length;
 
+var requestCount = 0;
+
+await new Promise(resolve => setTimeout(resolve, 5000));
+
 if (currentUserAgent == userAgentLimit) {
   currentUserAgent = 0;
 }
@@ -45,7 +49,16 @@ if (currentUserAgent == userAgentLimit) {
 // Define a route to fetch Instagram user info
 
 // To get Data from instagram user Id
-app.get("/api/instagram/user-pictures/:userId", (req, res) => {
+app.get("/api/instagram/user-pictures/:userId", async (req, res) => {
+
+  requestCount = requestCount+1;
+
+  if(requestCount => 20){
+    await new Promise(resolve => setTimeout(resolve, 60000));
+    requestCount = 0;
+  }
+
+  
   if (currentUserAgent == userAgentLimit) {
     currentUserAgent = 0;
   }
@@ -87,7 +100,16 @@ app.get("/api/instagram/user-pictures/:userId", (req, res) => {
 });
 
 // To get User Id from Username
-app.get("/api/instagram/user-id/:userName", (req, res) => {
+app.get("/api/instagram/user-id/:userName", async (req, res) => {
+  
+
+  requestCount = requestCount+1;
+
+  if(requestCount => 20){
+    await new Promise(resolve => setTimeout(resolve, 60000));
+    requestCount = 0;
+  }
+
   if (currentUserAgent == userAgentLimit) {
     currentUserAgent = 0;
   }
