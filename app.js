@@ -45,7 +45,7 @@ var requestCount = 0;
 // To get Data from instagram user Id
 app.get("/api/instagram/user-pictures/:userId", async (req, res) => {
 
-  requestCount = requestCount++;
+  requestCount++;
 
 
   console.log(requestCount);
@@ -99,7 +99,7 @@ app.get("/api/instagram/user-pictures/:userId", async (req, res) => {
 app.get("/api/instagram/user-id/:userName", async (req, res) => {
   
 
-  requestCount = requestCount++;
+  requestCount++;
 
   console.log(requestCount);
   if(requestCount => 20){
