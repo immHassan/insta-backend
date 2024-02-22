@@ -40,12 +40,6 @@ var userAgentLimit = userAgents.length;
 
 var requestCount = 0;
 
-await new Promise(resolve => setTimeout(resolve, 5000));
-
-if (currentUserAgent == userAgentLimit) {
-  currentUserAgent = 0;
-}
-
 // Define a route to fetch Instagram user info
 
 // To get Data from instagram user Id
