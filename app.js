@@ -60,6 +60,16 @@ app.get("/api/instagram/user-pictures/:userId", async (req, res) => {
     currentUserAgent = 0;
   }
 
+
+
+
+  const randomDelay = Math.floor(Math.random() * 6) + 1; // Generates a random number between 1 and 6
+  const delayInMilliseconds = randomDelay * 1000; // Convert seconds to milliseconds
+  
+  await new Promise(resolve => setTimeout(resolve, delayInMilliseconds));
+
+
+
   const { userId } = req.params; // Get the userId from the request parameters
   axios
     .get(`https://i.instagram.com/api/v1/users/${userId}/info/`, {
