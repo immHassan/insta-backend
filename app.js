@@ -43,6 +43,11 @@ totalRequestCount++;
 
 console.log("requestCount",requestCount);
 console.log("totalRequestCount",totalRequestCount);
+console.log("requestTimestamps",requestTimestamps);
+
+console.log("requestTimestamps length",requestTimestamps.length);
+
+
 
 
 
