@@ -71,6 +71,9 @@ requestTimestamps.push(defcurrentTime);
 requestTimestamps.push(defcurrentTime);
 requestTimestamps.push(defcurrentTime);
 requestTimestamps.push(defcurrentTime);
+requestTimestamps.push(defcurrentTime);
+requestTimestamps.push(defcurrentTime);
+requestTimestamps.push(defcurrentTime);
 
 // Define a route to fetch Instagram user info
 
@@ -79,6 +82,9 @@ app.get("/api/instagram/user-pictures/:userId", async (req, res) => {
 
   
 const currentTime = Date.now();
+
+
+requestTimestamps.push(currentTime);
 
 
 // Remove timestamps older than 1 hour fromrequestTimestamps.push(currentTime); the array
@@ -103,8 +109,10 @@ if (requestCount >= 20) {
 
     console.log(requestTimestamps1);
     return res.status(429).json({ message: " 20 request rate limit exceeded. Please will for a minute" });
-    requestCount = 0;
+    
   }
+
+  requestCount = 0;
 }
 
 
