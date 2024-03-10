@@ -19,8 +19,8 @@ const currentTime = Date.now();
 requestTimestamps = requestTimestamps.filter(timestamp => currentTime - timestamp <= 3600000);
 
 // If request limit is reached, return error response
-if (requestTimestamps.length >= 60) {
-  return res.status(429).json({ message: "60 requests per hour rate limit exceeded. Please try again later." });
+if (requestTimestamps.length >= 55) {
+  return res.status(429).json({ message: "55 requests per hour rate limit exceeded. Please try again later." });
 }
 
 
@@ -73,8 +73,6 @@ app.get("/api/instagram/user-pictures/:userId", async (req, res) => {
 
 // To get User Id from Username
 app.get("/api/instagram/user-id/:userName", async (req, res) => {
-  
-
 
   // const randomDelay = Math.floor(Math.random() * 6) + 1; // Generates a random number between 1 and 6
   // const delayInMilliseconds = randomDelay * 1000; // Convert seconds to milliseconds  
@@ -100,7 +98,7 @@ app.get("/api/instagram/user-id/:userName", async (req, res) => {
       });
     })
     .catch((error) => {
-      
+
       console.error(error);
       res.json({ data: [], message: "something went wrong", success: false });
     });
