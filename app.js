@@ -9,71 +9,42 @@ var userAgents = [
   "Mozilla/5.0 (Linux; Android 12; P60 Build/SP1A.210812.016; wv) AppleWebKit/537.36 (KHTML, like Gecko) Version/4.0 Chrome/118.0.0.0 Mobile Safari/537.36 Instagram 308.0.0.36.109 Android (31/12; 320dpi; 720x1468; CUBOT; P60; P60; mt6765; es_ES; 534961953)",
 ];
 
-var requestCount = 15;
+var requestCount = 0;
 
-var totalRequestCount = 40;
+var totalRequestCount = 0;
+var requestTimestamps = []; // Array to store timestamps of requests
 
-//timestamp array
-var requestTimestamps = [];
+
+// Define a route to fetch Instagram user info
 
 // To get Data from instagram user Id
 app.get("/api/instagram/user-pictures/:userId", async (req, res) => {
 
   
-const currentTime = Date.now();
+  const currentTime = Date.now();
 
-
-requestTimestamps.push(currentTime);
-
-
-// Remove timestamps older than 1 hour fromrequestTimestamps.push(currentTime); the array
+// Remove timestamps older than 1 hour from the array
 requestTimestamps = requestTimestamps.filter(timestamp => currentTime - timestamp <= 3600000);
 
-console.log("requestTimestamps",requestTimestamps);
-
-console.log("requestTimestamps count",requestTimestamps.length);
-
-
 // If request limit is reached, return error response
-if (requestTimestamps.length >= 60) {
-  return res.status(429).json({ message: "60 requests per hour rate limit exceeded. Please try again later." });
+if (requestTimestamps.length >= 55) {
+  return res.status(429).json({ message: "55 requests per hour rate limit exceeded. Please try again later." });
 }
-
-// Remove timestamps older than 1 hour fromrequestTimestamps.push(currentTime); the array
-requestTimestamps1 = requestTimestamps.filter(timestamp => currentTime - timestamp <= 60000);
-
-console.log("requestTimestamps1",requestTimestamps1);
-console.log("requestTimestamps1 count ",requestTimestamps1.length);
 
 
 if (requestCount >= 20) {
-
-  if (requestTimestamps1.length > 0) {
-    console.log(requestTimestamps1);
-    return res.status(429).json({ message: " 20 request rate limit exceeded. Please will for a minute" });
-  }
-
-  requestCount = 0;
+      await new Promise(resolve => setTimeout(resolve, 60000));
+      requestCount = 0;
 }
-
-
 
 
 requestCount++;
 totalRequestCount++;
 
-
-res.json({
-  profile_pictures: [],
-  message: "Data fetched successfully",
-  success: true,
-});
+console.log("requestCount",requestCount);
+console.log("totalRequestCount",totalRequestCount);
 
 
- 
-  // const randomDelay = Math.floor(Math.random() * 6) + 1; // Generates a random number between 1 and 6
-  // const delayInMilliseconds = randomDelay * 1000; // Convert seconds to milliseconds  
-  // await new Promise(resolve => setTimeout(resolve, delayInMilliseconds));
 
   const { userId } = req.params; // Get the userId from the request parameters
   axios
