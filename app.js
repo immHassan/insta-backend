@@ -31,16 +31,22 @@ if (requestCount >= 20) {
 
 
 
+// Define a route to fetch Instagram user info
+
+// To get Data from instagram user Id
+app.get("/api/instagram/user-pictures/:userId", async (req, res) => {
+ 
+
+
+
 requestCount++;
 totalRequestCount++;
 
 console.log("requestCount",requestCount);
 console.log("totalRequestCount",totalRequestCount);
 
-// Define a route to fetch Instagram user info
 
-// To get Data from instagram user Id
-app.get("/api/instagram/user-pictures/:userId", async (req, res) => {
+ 
   // const randomDelay = Math.floor(Math.random() * 6) + 1; // Generates a random number between 1 and 6
   // const delayInMilliseconds = randomDelay * 1000; // Convert seconds to milliseconds  
   // await new Promise(resolve => setTimeout(resolve, delayInMilliseconds));
