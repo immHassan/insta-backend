@@ -12,8 +12,9 @@ var userAgents = [
 var requestCount = 15;
 
 var totalRequestCount = 40;
-var requestTimestamps = []; // Array to store timestamps of requests
 
+//timestamp array
+var requestTimestamps = [];
 
 // Define a route to fetch Instagram user info
 
@@ -23,18 +24,72 @@ app.get("/api/instagram/user-pictures/:userId", async (req, res) => {
   
   const currentTime = Date.now();
 
-// Remove timestamps older than 1 hour from the array
+
+  // Push current timestamp into the array
+requestTimestamps.push(currentTime);
+requestTimestamps.push(currentTime);
+requestTimestamps.push(currentTime);
+requestTimestamps.push(currentTime);
+requestTimestamps.push(currentTime);
+requestTimestamps.push(currentTime);
+requestTimestamps.push(currentTime);
+requestTimestamps.push(currentTime);
+requestTimestamps.push(currentTime);
+requestTimestamps.push(currentTime);
+requestTimestamps.push(currentTime);
+requestTimestamps.push(currentTime);
+requestTimestamps.push(currentTime);
+requestTimestamps.push(currentTime);
+requestTimestamps.push(currentTime);
+requestTimestamps.push(currentTime);
+requestTimestamps.push(currentTime);
+requestTimestamps.push(currentTime);
+requestTimestamps.push(currentTime);
+requestTimestamps.push(currentTime);
+requestTimestamps.push(currentTime);
+requestTimestamps.push(currentTime);
+requestTimestamps.push(currentTime);
+requestTimestamps.push(currentTime);
+requestTimestamps.push(currentTime);
+requestTimestamps.push(currentTime);
+requestTimestamps.push(currentTime);
+requestTimestamps.push(currentTime);
+requestTimestamps.push(currentTime);
+requestTimestamps.push(currentTime);
+requestTimestamps.push(currentTime);
+requestTimestamps.push(currentTime);
+requestTimestamps.push(currentTime);
+requestTimestamps.push(currentTime);
+requestTimestamps.push(currentTime);
+requestTimestamps.push(currentTime);
+requestTimestamps.push(currentTime);
+requestTimestamps.push(currentTime);
+requestTimestamps.push(currentTime);
+requestTimestamps.push(currentTime);
+requestTimestamps.push(currentTime);
+requestTimestamps.push(currentTime);
+requestTimestamps.push(currentTime);
+requestTimestamps.push(currentTime);
+requestTimestamps.push(currentTime);
+requestTimestamps.push(currentTime);
+requestTimestamps.push(currentTime);
+requestTimestamps.push(currentTime);
+
+// Remove timestamps older than 1 hour fromrequestTimestamps.push(currentTime); the array
 requestTimestamps = requestTimestamps.filter(timestamp => currentTime - timestamp <= 3600000);
 
+console.log("requestTimestamps",requestTimestamps);
+
+
 // If request limit is reached, return error response
-if (requestTimestamps.length >= 55) {
+if (requestTimestamps.length >= 60) {
   return res.status(429).json({ message: "55 requests per hour rate limit exceeded. Please try again later." });
 }
 
 
 if (requestCount >= 20) {
-  requestCount = 0;
   return res.status(429).json({ message: " 20 request rate limit exceeded. Please will for a minute" });
+  requestCount = 0;
 }
 
 
