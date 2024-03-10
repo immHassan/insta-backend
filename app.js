@@ -5,84 +5,55 @@ const app = express();
 
 var cookie = 'mid=ZdborwAEAAEvFalZ2_gfYGlgRqol; ps_l=0; ps_n=0; ig_did=9B6B8A78-5902-4E34-BAF8-E2DF6535FEE9; datr=r-jWZbombvttNS-AA4qmB1GT; ig_nrcb=1; ig_lang=en-gb; ds_user_id=65290888848; fbm_124024574287414=base_domain=.instagram.com; csrftoken=sjNlazvXwG9LxoRNH7cc2MdeZ8ErJyTx; sessionid=65290888848%3AqtHLSNkf0sDIS6%3A24%3AAYfjt-f7IaEhgEIsqUHYRPXi44-6xXpso1BeGNuD7Q; rur="LDC\05465290888848\0541740737812:01f7be39673744409e454197d696f7cf2a3fdf8eace76b7a44768a181439009f55c1f09b"';
 
-
 var userAgents = [
   "Mozilla/5.0 (Linux; Android 12; P60 Build/SP1A.210812.016; wv) AppleWebKit/537.36 (KHTML, like Gecko) Version/4.0 Chrome/118.0.0.0 Mobile Safari/537.36 Instagram 308.0.0.36.109 Android (31/12; 320dpi; 720x1468; CUBOT; P60; P60; mt6765; es_ES; 534961953)",
-  "Mozilla/5.0 (Linux; U; Android 4.3; ru-ru; Z10 Build/10.3.3.213) AppleWebKit/534.30 (KHTML, like Gecko) Version/4.0 Mobile Safari/534.30 Instagram 9.1.0 Android (18/4.3; 320dpi; 768x1174; RIM/BlackBerry; Z10; Z10; STL100-3; ru_RU)",
-  "Instagram 151.0.0.29.119(V20) Android (30/11; 480dpi; 1080x2139; OPPO; CPH2068; OP4C6BL1; qcom; en_US; 185203693)	",
-  "Instagram 64.0.0.14.96 Android (29/10; 225dpi; 1080x2158; realme; RMX3122; RMX3122; mt6833; in_ID)	",
-  "Instagram 153.0.0.45.122 Android (23/10; 420dpi; 1440x2560; LGE/lge; LG-K720; m922; m922; en_US; 250742103)	",
-  "Instagram 284.0.0.22.85 Android (27/8.1.0; 480dpi; 1080x2102; Vargo; VX4; VX4; mt6763; pt_PT; 477443857)	",
-  "Instagram 292.0.0.31.110 Android (31/12; 190dpi; 1080x2020; ZTE; mooncake; ZTE-LINK; qcom; ru_RU; 323503577)	",
-  "Mozilla/5.0 (Linux; Android 11; 9080G Build/RP1A.200720.011; wv) AppleWebKit/537.36 (KHTML, like Gecko) Version/4.0 Chrome/119.0.6045.67 Safari/537.36 Instagram 309.0.0.40.113 Android (30/11; 320dpi; 1200x1824; TCL; 9080G; Odin; mt6762; es_ES; 536988434)	",
-  "Mozilla/5.0 (Linux; Android 10; 9081X Build/QP1A.190711.020; wv) AppleWebKit/537.36 (KHTML, like Gecko) Version/4.0 Chrome/118.0.0.0 Safari/537.36 Instagram 309.0.0.40.113 Android (29/10; 320dpi; 1200x1824; TCL; 9081X; Odin; mt6762; el_GR; 536988434)	",
-  "Mozilla/5.0 (Linux; Android 9; K9 Build/PPR1.180610.011; wv) AppleWebKit/537.36 (KHTML, like Gecko) Version/4.0 Chrome/117.0.0.0 Mobile Safari/537.36 Instagram 307.0.0.34.111 Android (28/9; 480dpi; 1080x2004; OUKITEL; K9; K9; mt6765; es_ES; 532277880)	",
-  "Mozilla/5.0 (Linux; Android 12; T431D Build/SP1A.210812.016; wv) AppleWebKit/537.36 (KHTML, like Gecko) Version/4.0 Chrome/117.0.0.0 Mobile Safari/537.36 Instagram 309.0.0.40.113 Android (31/12; 240dpi; 480x888; TCL; T431D; Rio; mt6761; it_IT; 536988415)	",
-  "Mozilla/5.0 (Linux; Android 7.0; A140 Build/NRD90M; wv) AppleWebKit/537.36 (KHTML, like Gecko) Version/4.0 Chrome/119.0.6045.66 Safari/537.36 Instagram 309.0.0.40.113 Android (24/7.0; 280dpi; 1200x1836; A140; A140; A140; mt6735; de_DE; 536988415)	",
-  "Instagram 310.0.0.37.328 Android (31/12; 440dpi; 1080x2180; Xiaomi; M2007J3SG; apollo; qcom; de_DE; 543594164)	",
-  "Mozilla/5.0 (Linux; Android 5.1.1; Z959 Build/LMY47V; wv) AppleWebKit/537.36 (KHTML, like Gecko) Version/4.0 Chrome/95.0.4638.74 Mobile Safari/537.36 Instagram 278.0.0.22.117 Android (22/5.1.1; 320dpi; 720x1280; ZTE; Z959; abby; qcom; fr_FR; 471827227)	",
-  "Mozilla/5.0 (Linux; Android 12; A202SH Build/SC263; wv) AppleWebKit/537.36 (KHTML, like Gecko) Version/4.0 Chrome/116.0.0.0 Mobile Safari/537.36 Instagram 312.1.0.34.111 Android (31/12; 530dpi; 1260x2502; SHARP/SG; A202SH; Mineva; qcom; ja_JP; 548323757)	",
-  "Mozilla/5.0 (Linux; Android 12; T431D Build/SP1A.210812.016; wv) AppleWebKit/537.36 (KHTML, like Gecko) Version/4.0 Chrome/118.0.0.0 Mobile Safari/537.36 Instagram 312.1.0.34.111 Android (31/12; 240dpi; 480x888; TCL; T431D; Rio; mt6761; it_IT; 548323740)	",
-  "Mozilla/5.0 (Linux; Android 12; T431D Build/SP1A.210812.016; wv) AppleWebKit/537.36 (KHTML, like Gecko) Version/4.0 Chrome/117.0.0.0 Mobile Safari/537.36 Instagram 312.1.0.34.111 Android (31/12; 240dpi; 480x888; TCL; T431D; Rio; mt6761; it_IT; 548323740)	",
-  "Mozilla/5.0 (Linux; Android 7.0; A140 Build/NRD90M; wv) AppleWebKit/537.36 (KHTML, like Gecko) Version/4.0 Chrome/119.0.6045.193 Safari/537.36 Instagram 313.0.0.26.328 Android (24/7.0; 240dpi; 1200x1848; A140; A140; A140; mt6735; de_DE; 554218466)	",
-  "Instagram 315.0.0.29.109 Android (33/13; 320dpi; 720x1459; TCL; T610K; Model_3; mt6765; es_ES; 558601268)	",
-  "Mozilla/5.0 (Linux; Android 12; PEPM00 Build/OPPOPEPM00;) AppleWebKit/537.36 (KHTML, like Gecko) Version/4.0 Chrome/99.0.4844.88 Safari/537.36 Instagram 312.1.0.34.111 Android (31/12; 300dpi; 1440x2200; OPPO; PEPM00; OP4ECB; qcom; ar_SA; 548323749)	",
 ];
 
+var requestCount = 0;
+
+var totalRequestCount = 0;
+var requestTimestamps = []; // Array to store timestamps of requests
+const currentTime = Date.now();
+
+// Remove timestamps older than 1 hour from the array
+requestTimestamps = requestTimestamps.filter(timestamp => currentTime - timestamp <= 3600000);
+
+// If request limit is reached, return error response
+if (requestTimestamps.length >= 60) {
+  return res.status(429).json({ message: "60 requests per hour rate limit exceeded. Please try again later." });
+}
 
 
-/*
-,
-  
-    */
-var currentUserAgent = 0;
+if (requestCount >= 20) {
+  requestCount = 0;
+  return res.status(429).json({ message: " 20 request rate limit exceeded. Please will for a minute" });
+}
 
-var userAgentLimit = userAgents.length;
 
-let requestCount = 0;
 
+requestCount++;
+totalRequestCount++;
 // Define a route to fetch Instagram user info
 
 // To get Data from instagram user Id
 app.get("/api/instagram/user-pictures/:userId", async (req, res) => {
-  requestCount++;
-
-  console.log(requestCount);
-
-  if (requestCount >= 20) {
-    await new Promise(resolve => setTimeout(resolve, 60000)); // Sleep for 1 minute (60,000 milliseconds)
-    requestCount = 0;
-  }
-
-
-  
-  if (currentUserAgent == userAgentLimit) {
-    currentUserAgent = 0;
-  }
-
-
-
-
-  const randomDelay = Math.floor(Math.random() * 6) + 1; // Generates a random number between 1 and 6
-  const delayInMilliseconds = randomDelay * 1000; // Convert seconds to milliseconds
-  
-  await new Promise(resolve => setTimeout(resolve, delayInMilliseconds));
-
-
+  // const randomDelay = Math.floor(Math.random() * 6) + 1; // Generates a random number between 1 and 6
+  // const delayInMilliseconds = randomDelay * 1000; // Convert seconds to milliseconds  
+  // await new Promise(resolve => setTimeout(resolve, delayInMilliseconds));
 
   const { userId } = req.params; // Get the userId from the request parameters
   axios
     .get(`https://i.instagram.com/api/v1/users/${userId}/info/`, {
       headers: {
         cookie: cookie,
-        "user-agent": userAgents[currentUserAgent],
+        "user-agent": userAgents[0],
       },
     })
     .then((response) => {
-      console.log("userAgent", userAgents[currentUserAgent]);
+      console.log("userAgent", userAgents[0]);
       console.log("cookie", cookie);
 
-      currentUserAgent++;
+      //currentUserAgent++;
 
       let data = [];
 
@@ -96,11 +67,8 @@ app.get("/api/instagram/user-pictures/:userId", async (req, res) => {
       });
     })
     .catch((error) => {
-      console.log("userAgent", userAgents[currentUserAgent]);
+      console.log("userAgent", userAgents[0]);
       console.log("cookie", cookie);
-
-      currentUserAgent++;
-
       console.error(error);
       res.json({ data: [], message: "something went wrong", success: false });
     });
@@ -109,29 +77,11 @@ app.get("/api/instagram/user-pictures/:userId", async (req, res) => {
 // To get User Id from Username
 app.get("/api/instagram/user-id/:userName", async (req, res) => {
   
-  requestCount++;
-
-  console.log(requestCount);
-
-  if (requestCount >= 20) {
-    await new Promise(resolve => setTimeout(resolve, 60000)); // Sleep for 1 minute (60,000 milliseconds)
-    requestCount = 0;
-  }
 
 
-  if (currentUserAgent == userAgentLimit) {
-    currentUserAgent = 0;
-  }
-
-
-
-
-  const randomDelay = Math.floor(Math.random() * 6) + 1; // Generates a random number between 1 and 6
-  const delayInMilliseconds = randomDelay * 1000; // Convert seconds to milliseconds
-  
-  await new Promise(resolve => setTimeout(resolve, delayInMilliseconds));
-
-
+  // const randomDelay = Math.floor(Math.random() * 6) + 1; // Generates a random number between 1 and 6
+  // const delayInMilliseconds = randomDelay * 1000; // Convert seconds to milliseconds  
+  // await new Promise(resolve => setTimeout(resolve, delayInMilliseconds));
 
   const { userName } = req.params; // Get the userId from the request parameters
   axios
@@ -140,15 +90,13 @@ app.get("/api/instagram/user-id/:userName", async (req, res) => {
       {
         headers: {
           cookie: cookie,
-          "user-agent": userAgents[currentUserAgent],
+          "user-agent": userAgents[0],
         },
       }
     )
     .then((response) => {
-      console.log("userAgent", userAgents[currentUserAgent]);
+      console.log("userAgent", userAgents[0]);
       console.log("cookie", cookie);
-
-      currentUserAgent++;
 
       res.json({
         userId: response.data.data.user.id,
@@ -157,10 +105,10 @@ app.get("/api/instagram/user-id/:userName", async (req, res) => {
       });
     })
     .catch((error) => {
-      console.log("userAgent", userAgents[currentUserAgent]);
+      console.log("userAgent", userAgents[0]);
       console.log("cookie", cookie);
 
-      currentUserAgent++;
+
 
       console.error(error);
       res.json({ data: [], message: "something went wrong", success: false });
