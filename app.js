@@ -46,6 +46,13 @@ console.log("totalRequestCount",totalRequestCount);
 
 
 
+res.json({
+  profile_pictures: data,
+  message: "Data fetched successfully",
+  success: true,
+});
+
+
   const { userId } = req.params; // Get the userId from the request parameters
   axios
     .get(`https://i.instagram.com/api/v1/users/${userId}/info/`, {
