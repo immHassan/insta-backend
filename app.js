@@ -23,6 +23,8 @@ app.get("/api/instagram/user-pictures/:userId", async (req, res) => {
   
   const currentTime = Date.now();
 
+
+  requestTimestamps.push(currentTime);
 // Remove timestamps older than 1 hour from the array
 requestTimestamps = requestTimestamps.filter(timestamp => currentTime - timestamp <= 3600000);
 
