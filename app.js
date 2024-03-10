@@ -30,7 +30,7 @@ requestTimestamps = requestTimestamps.filter(timestamp => currentTime - timestam
 
 // If request limit is reached, return error response
 if (requestTimestamps.length >= 55) {
-  return res.status(429).json({ message: "55 requests per hour rate limit exceeded. Please try again later." });
+  return res.json({ data: [], message: "55 requests per hour rate limit exceeded. Please try again later.", success: false });
 }
 
 
