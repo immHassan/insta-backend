@@ -64,7 +64,7 @@ totalRequestCount++;
 
 
 res.json({
-  profile_pictures: data,
+  profile_pictures: [],
   message: "Data fetched successfully",
   success: true,
 });
