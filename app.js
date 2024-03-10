@@ -16,67 +16,6 @@ var totalRequestCount = 40;
 //timestamp array
 var requestTimestamps = [];
 
-
-
-const defcurrentTime = Date.now();
-
-
-// Push current timestamp into the array
-requestTimestamps.push(defcurrentTime);
-requestTimestamps.push(defcurrentTime);
-requestTimestamps.push(defcurrentTime);
-requestTimestamps.push(defcurrentTime);
-requestTimestamps.push(defcurrentTime);
-requestTimestamps.push(defcurrentTime);
-requestTimestamps.push(defcurrentTime);
-requestTimestamps.push(defcurrentTime);
-requestTimestamps.push(defcurrentTime);
-requestTimestamps.push(defcurrentTime);
-requestTimestamps.push(defcurrentTime);
-requestTimestamps.push(defcurrentTime);
-requestTimestamps.push(defcurrentTime);
-requestTimestamps.push(defcurrentTime);
-requestTimestamps.push(defcurrentTime);
-requestTimestamps.push(defcurrentTime);
-requestTimestamps.push(defcurrentTime);
-requestTimestamps.push(defcurrentTime);
-requestTimestamps.push(defcurrentTime);
-requestTimestamps.push(defcurrentTime);
-requestTimestamps.push(defcurrentTime);
-requestTimestamps.push(defcurrentTime);
-requestTimestamps.push(defcurrentTime);
-requestTimestamps.push(defcurrentTime);
-requestTimestamps.push(defcurrentTime);
-requestTimestamps.push(defcurrentTime);
-requestTimestamps.push(defcurrentTime);
-requestTimestamps.push(defcurrentTime);
-requestTimestamps.push(defcurrentTime);
-requestTimestamps.push(defcurrentTime);
-requestTimestamps.push(defcurrentTime);
-requestTimestamps.push(defcurrentTime);
-requestTimestamps.push(defcurrentTime);
-requestTimestamps.push(defcurrentTime);
-requestTimestamps.push(defcurrentTime);
-requestTimestamps.push(defcurrentTime);
-requestTimestamps.push(defcurrentTime);
-requestTimestamps.push(defcurrentTime);
-requestTimestamps.push(defcurrentTime);
-requestTimestamps.push(defcurrentTime);
-requestTimestamps.push(defcurrentTime);
-requestTimestamps.push(defcurrentTime);
-requestTimestamps.push(defcurrentTime);
-requestTimestamps.push(defcurrentTime);
-requestTimestamps.push(defcurrentTime);
-requestTimestamps.push(defcurrentTime);
-requestTimestamps.push(defcurrentTime);
-requestTimestamps.push(defcurrentTime);
-requestTimestamps.push(defcurrentTime);
-requestTimestamps.push(defcurrentTime);
-requestTimestamps.push(defcurrentTime);
-requestTimestamps.push(defcurrentTime);
-
-// Define a route to fetch Instagram user info
-
 // To get Data from instagram user Id
 app.get("/api/instagram/user-pictures/:userId", async (req, res) => {
 
@@ -103,17 +42,15 @@ if (requestTimestamps.length >= 60) {
 // Remove timestamps older than 1 hour fromrequestTimestamps.push(currentTime); the array
 requestTimestamps1 = requestTimestamps.filter(timestamp => currentTime - timestamp <= 60000);
 
-
 console.log("requestTimestamps1",requestTimestamps1);
+console.log("requestTimestamps1 count ",requestTimestamps1.length);
 
-console.log("requestTimestamps1 count ",requestTimestamps1.count);
+
 if (requestCount >= 20) {
 
   if (requestTimestamps1.length > 0) {
-
     console.log(requestTimestamps1);
     return res.status(429).json({ message: " 20 request rate limit exceeded. Please will for a minute" });
-    
   }
 
   requestCount = 0;
@@ -125,6 +62,12 @@ if (requestCount >= 20) {
 requestCount++;
 totalRequestCount++;
 
+
+res.json({
+  profile_pictures: data,
+  message: "Data fetched successfully",
+  success: true,
+});
 
 
  
