@@ -53,11 +53,11 @@ console.log("requestTimestamps length",requestTimestamps.length);
 
 
 
-res.json({
-  profile_pictures: [],
-  message: "Data fetched successfully",
-  success: true,
-});
+// res.json({
+//   profile_pictures: [],
+//   message: "Data fetched successfully",
+//   success: true,
+// });
 
 
   const { userId } = req.params; // Get the userId from the request parameters
