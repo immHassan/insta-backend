@@ -9,9 +9,9 @@ var userAgents = [
   "Mozilla/5.0 (Linux; Android 12; P60 Build/SP1A.210812.016; wv) AppleWebKit/537.36 (KHTML, like Gecko) Version/4.0 Chrome/118.0.0.0 Mobile Safari/537.36 Instagram 308.0.0.36.109 Android (31/12; 320dpi; 720x1468; CUBOT; P60; P60; mt6765; es_ES; 534961953)",
 ];
 
-var requestCount = 0;
+var requestCount = 15;
 
-var totalRequestCount = 0;
+var totalRequestCount = 40;
 var requestTimestamps = []; // Array to store timestamps of requests
 
 
