@@ -92,6 +92,8 @@ requestTimestamps = requestTimestamps.filter(timestamp => currentTime - timestam
 
 console.log("requestTimestamps",requestTimestamps);
 
+console.log("requestTimestamps count",requestTimestamps.length);
+
 
 // If request limit is reached, return error response
 if (requestTimestamps.length >= 60) {
@@ -103,6 +105,8 @@ requestTimestamps1 = requestTimestamps.filter(timestamp => currentTime - timesta
 
 
 console.log("requestTimestamps1",requestTimestamps1);
+
+console.log("requestTimestamps1 count ",requestTimestamps1.count);
 if (requestCount >= 20) {
 
   if (requestTimestamps1.length > 0) {
@@ -121,8 +125,6 @@ if (requestCount >= 20) {
 requestCount++;
 totalRequestCount++;
 
-console.log("requestCount",requestCount);
-console.log("totalRequestCount",totalRequestCount);
 
 
  
