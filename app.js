@@ -3,7 +3,7 @@ const axios = require("axios");
 
 const app = express();
 
-var cookie = 'mid=ZdborwAEAAEvFalZ2_gfYGlgRqol; ps_l=0; ps_n=0; ig_did=9B6B8A78-5902-4E34-BAF8-E2DF6535FEE9; datr=r-jWZbombvttNS-AA4qmB1GT; ig_nrcb=1; ig_lang=en-gb; fbm_124024574287414=base_domain=.instagram.com; dpr=2; csrftoken=mUDHAWIbU4MHgJ39vvmSDhPh0GAawk3h; ds_user_id=65290888848; sessionid=65290888848%3AtdLD3P0Sm5pbYx%3A22%3AAYfdRWz0aL012fca4C-QoPL1G2X9s36pODCagJJ-cg; rur="LDC\05465290888848\0541741692275:01f7e071bf9fbc386ffe97ddde4e7a25a72524d648144a19ca6b28a3d24bf2554c00b3b6"';
+var cookie = 'mid=ZdborwAEAAEvFalZ2_gfYGlgRqol; ps_l=0; ps_n=0; ig_did=9B6B8A78-5902-4E34-BAF8-E2DF6535FEE9; datr=r-jWZbombvttNS-AA4qmB1GT; ig_nrcb=1; ig_lang=en-gb; fbm_124024574287414=base_domain=.instagram.com; dpr=2; fbsr_124024574287414=UsuiyvTJnnn7ubZ7kqEpiNpwH0jAwJ83Oos7aV5yKtM.eyJ1c2VyX2lkIjoiMTAwMDAwMDM5NDI5MDg0IiwiY29kZSI6IkFRRF80R1ZmR1d4QkZIQklPb2s3LVVNd2V0UkhRTFZzR0FpUG9KLXAxU3VZM2tHb3loU0N6LThJNXI2OFNoQjRKYmRVd0RGWkkzVlp3YmJwanBOcmhfaHZma1hHWXMzOXJEbVZBZjk2OFNFUl9lQmdLakRWX3cyeTlNUjN1UEdUVnRTYmpwTzB5ZFFROG5XU3luSzQ5Skh0eHdseksyZXpIazZOekZyZ0NUc3gtUVp0U25NSldNamF1UzZCM216UHZpRTNTY2ZJRmJsOWstMjRqMVRKeUNRSkp5MEYxYjl6SE45RGVtNDZZZEo1RUdkV3RGZnJieDI2MzdOUnZxUVE4Y3BsNktIWEZpQjdvRmRweDU5U2FpTVZDd2dOb0NycnJaWkFkbm1SN3lDMG5Rb2pzeXdpNlBCNmJPVmh1SlFNOEZZQTV0UmVqSHlLdUdlZUdnYnFIQjZvZEcxWlEwY0VIeUt0SFpBLUxsdFM3ZyIsIm9hdXRoX3Rva2VuIjoiRUFBQnd6TGl4bmpZQk82QzVTemhWRHpaQUNkWHZkaHAzYUlVM0ZaQ0JpZHRXeUp4eXIxN2tnWkNFUlA5N25JSW9xTWRMRlQ1M2Nnd0FIZVVNNjRkSTZlSXJFYmdseWM2RVV1SUVQUVVaQjlUMGNLWFB2Q0oxMjdnTFVmdDViQWVTdlcxZW9WWkIzQUc3Y3hoUTJFWkNQRGpaQnU0ZVJCZ0xiTXo2YWFaQWZycW82Q1h0TFpCbkFUeElZbDhBemp0MUtCTm4zY2tpalpDSmdXanFPczVqSWJLNDRaRCIsImFsZ29yaXRobSI6IkhNQUMtU0hBMjU2IiwiaXNzdWVkX2F0IjoxNzEwMTgyNTI3fQ; csrftoken=BWhDoTlynUMwzDRrFMsQ3xVTWevoyVlT; ds_user_id=59541738154; sessionid=59541738154%3AdJGjLeSeeYZY1h%3A26%3AAYe8uLMjy0K_9_1z_iO4jYTKkOCuWaWeir8d3NrDHA; rur="LDC\05459541738154\0541741718562:01f7782da0874a8ff647646c80817adf7cb0696480fb46cebdb0da649646466106bb30c5"';
 
 var userAgents = [
   "Mozilla/5.0 (Linux; Android 12; P60 Build/SP1A.210812.016; wv) AppleWebKit/537.36 (KHTML, like Gecko) Version/4.0 Chrome/118.0.0.0 Mobile Safari/537.36 Instagram 308.0.0.36.109 Android (31/12; 320dpi; 720x1468; CUBOT; P60; P60; mt6765; es_ES; 534961953)",
@@ -61,7 +61,36 @@ console.log("requestTimestamps length",requestTimestamps.length);
 // });
 
 
-  await trigger_api(req);
+
+
+    const { userId } = req.params; // Get the userId from the request parameters
+  await axios
+    .get(`https://i.instagram.com/api/v1/users/${userId}/info/`, {
+      headers: {
+        cookie: cookie,
+        "user-agent": userAgents[0],
+      },
+    })
+    .then((response) => {
+      let data = [];
+
+      data = response.data.user.hd_profile_pic_versions;
+      data = [...data, response.data.user.hd_profile_pic_url_info];
+
+      res.json({
+        profile_pictures: data,
+        message: "Data fetched successfully",
+        success: true,
+      });
+    })
+    .catch((error) => {
+
+      console.log("error",error);
+      res.json({ data: [], message: "something went wrong", success: false });
+    });
+
+  
+  //await trigger_api(req);
 
 
   
