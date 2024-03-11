@@ -23,7 +23,7 @@ app.get("/api/instagram/user-pictures/:userId", async (req, res) => {
 
      const randomDelay = Math.floor(Math.random() * 6) + 1; // Generates a random number between 1 and 6
      const delayInMilliseconds = randomDelay * 1000; // Convert seconds to milliseconds  
-     await new Promise(resolve => setTimeout(resolve, delayInMilliseconds));
+     //await new Promise(resolve => setTimeout(resolve, delayInMilliseconds));
 
   
   const currentTime = Date.now();
