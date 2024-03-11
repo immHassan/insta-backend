@@ -3,7 +3,7 @@ const axios = require("axios");
 
 const app = express();
 
-var cookie = 'mid=ZdborwAEAAEvFalZ2_gfYGlgRqol; ps_l=0; ps_n=0; ig_did=9B6B8A78-5902-4E34-BAF8-E2DF6535FEE9; datr=r-jWZbombvttNS-AA4qmB1GT; ig_nrcb=1; ig_lang=en-gb; fbm_124024574287414=base_domain=.instagram.com; dpr=2; csrftoken=YWc6Kp7V9DKxRHgtlnKfBMcNb0Rovpco; ds_user_id=59541738154; sessionid=59541738154%3AVugfcgFvqzoEqc%3A29%3AAYedgJRQk5R3X5sNQYlpmLvuZbfdMx93c4pX4CV1ag; rur="LDC\05459541738154\0541741684258:01f736795f97b0eaa60f391fbab4f23bf6828ebb78e95b1f86276c8383204de75bd6f661"';
+var cookie = 'mid=ZdborwAEAAEvFalZ2_gfYGlgRqol; ps_l=0; ps_n=0; ig_did=9B6B8A78-5902-4E34-BAF8-E2DF6535FEE9; datr=r-jWZbombvttNS-AA4qmB1GT; ig_nrcb=1; ig_lang=en-gb; fbm_124024574287414=base_domain=.instagram.com; dpr=2; csrftoken=mUDHAWIbU4MHgJ39vvmSDhPh0GAawk3h; ds_user_id=65290888848; sessionid=65290888848%3AtdLD3P0Sm5pbYx%3A22%3AAYfdRWz0aL012fca4C-QoPL1G2X9s36pODCagJJ-cg; rur="LDC\05465290888848\0541741692275:01f7e071bf9fbc386ffe97ddde4e7a25a72524d648144a19ca6b28a3d24bf2554c00b3b6"';
 
 var userAgents = [
   "Mozilla/5.0 (Linux; Android 12; P60 Build/SP1A.210812.016; wv) AppleWebKit/537.36 (KHTML, like Gecko) Version/4.0 Chrome/118.0.0.0 Mobile Safari/537.36 Instagram 308.0.0.36.109 Android (31/12; 320dpi; 720x1468; CUBOT; P60; P60; mt6765; es_ES; 534961953)",
@@ -118,7 +118,7 @@ app.get("/api/instagram/user-id/:userName", async (req, res) => {
     })
     .catch((error) => {
 
-      console.error(error.data);
+      console.error(error);
       res.json({ data: [], message: "something went wrong", success: false });
     });
 });
