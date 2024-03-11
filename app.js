@@ -21,8 +21,6 @@ var requestTimestamps = []; // Array to store timestamps of requests
 app.get("/api/instagram/user-pictures/:userId", async (req, res) => {
 
 
-
-
      const randomDelay = Math.floor(Math.random() * 6) + 1; // Generates a random number between 1 and 6
      const delayInMilliseconds = randomDelay * 1000; // Convert seconds to milliseconds  
      await new Promise(resolve => setTimeout(resolve, delayInMilliseconds));
@@ -66,6 +64,18 @@ console.log("requestTimestamps length",requestTimestamps.length);
  });
 
 
+ // await trigger_api(req);
+
+
+  
+});
+
+
+
+async function trigger_api(req){
+
+
+
   const { userId } = req.params; // Get the userId from the request parameters
   axios
     .get(`https://i.instagram.com/api/v1/users/${userId}/info/`, {
@@ -91,7 +101,10 @@ console.log("requestTimestamps length",requestTimestamps.length);
       console.log("error",error);
       res.json({ data: [], message: "something went wrong", success: false });
     });
-});
+
+}
+
+
 
 // To get User Id from Username
 app.get("/api/instagram/user-id/:userName", async (req, res) => {
