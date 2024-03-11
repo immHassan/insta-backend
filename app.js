@@ -23,7 +23,7 @@ app.get("/api/instagram/user-pictures/:userId", async (req, res) => {
 
      const randomDelay = Math.floor(Math.random() * 6) + 1; // Generates a random number between 1 and 6
      const delayInMilliseconds = randomDelay * 1000; // Convert seconds to milliseconds  
-     //await new Promise(resolve => setTimeout(resolve, delayInMilliseconds));
+     await new Promise(resolve => setTimeout(resolve, delayInMilliseconds));
 
   
   const currentTime = Date.now();
@@ -31,7 +31,7 @@ app.get("/api/instagram/user-pictures/:userId", async (req, res) => {
 
   requestTimestamps.push(currentTime);
 // Remove timestamps older than 1 hour from the array
-requestTimestamps = requestTimestamps.filter(timestamp => currentTime - timestamp <= 3600000);
+requestTimestamps = await requestTimestamps.filter(timestamp => currentTime - timestamp <= 3600000);
 
 // If request limit is reached, return error response
 if (requestTimestamps.length >= 55) {
@@ -54,17 +54,14 @@ console.log("requestTimestamps",requestTimestamps);
 console.log("requestTimestamps length",requestTimestamps.length);
 
 
+// res.json({
+//   profile_pictures: [],
+//   message: "Data fetched successfully",
+//   success: true,
+// });
 
 
-
- res.json({
-   profile_pictures: [],
-   message: "Data fetched successfully",
-   success: true,
- });
-
-
- // await trigger_api(req);
+  await trigger_api(req);
 
 
   
