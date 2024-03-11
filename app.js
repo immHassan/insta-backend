@@ -46,7 +46,6 @@ totalRequestCount++;
 console.log("requestCount",requestCount);
 console.log("totalRequestCount",totalRequestCount);
 console.log("requestTimestamps",requestTimestamps);
-
 console.log("requestTimestamps length",requestTimestamps.length);
 
 
@@ -82,6 +81,7 @@ console.log("requestTimestamps length",requestTimestamps.length);
     })
     .catch((error) => {
 
+      console.log("error",error);
       res.json({ data: [], message: "something went wrong", success: false });
     });
 });
