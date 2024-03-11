@@ -29,7 +29,6 @@ app.get("/api/instagram/user-pictures/:userId", async (req, res) => {
   const currentTime = Date.now();
 
 
-  requestTimestamps.push(currentTime);
 // Remove timestamps older than 1 hour from the array
 requestTimestamps = await requestTimestamps.filter(timestamp => currentTime - timestamp <= 3600000);
 
@@ -38,6 +37,8 @@ if (requestTimestamps.length >= 55) {
   return res.json({ data: [], message: "55 requests per hour rate limit exceeded. Please try again later.", success: false });
 }
 
+requestTimestamps.push(currentTime);
+  
 
 if (requestCount >= 20) {
       await new Promise(resolve => setTimeout(resolve, 60000));
