@@ -20,6 +20,13 @@ var requestTimestamps = []; // Array to store timestamps of requests
 // To get Data from instagram user Id
 app.get("/api/instagram/user-pictures/:userId", async (req, res) => {
 
+
+
+
+     const randomDelay = Math.floor(Math.random() * 6) + 1; // Generates a random number between 1 and 6
+     const delayInMilliseconds = randomDelay * 1000; // Convert seconds to milliseconds  
+     await new Promise(resolve => setTimeout(resolve, delayInMilliseconds));
+
   
   const currentTime = Date.now();
 
@@ -81,7 +88,7 @@ console.log("requestTimestamps length",requestTimestamps.length);
     })
     .catch((error) => {
 
-      console.log("error",error);
+      console.log("error",error.data);
       res.json({ data: [], message: "something went wrong", success: false });
     });
 });
@@ -89,9 +96,6 @@ console.log("requestTimestamps length",requestTimestamps.length);
 // To get User Id from Username
 app.get("/api/instagram/user-id/:userName", async (req, res) => {
 
-  // const randomDelay = Math.floor(Math.random() * 6) + 1; // Generates a random number between 1 and 6
-  // const delayInMilliseconds = randomDelay * 1000; // Convert seconds to milliseconds  
-  // await new Promise(resolve => setTimeout(resolve, delayInMilliseconds));
 
   const { userName } = req.params; // Get the userId from the request parameters
   axios
@@ -114,7 +118,7 @@ app.get("/api/instagram/user-id/:userName", async (req, res) => {
     })
     .catch((error) => {
 
-      console.error(error);
+      console.error(error.data);
       res.json({ data: [], message: "something went wrong", success: false });
     });
 });
