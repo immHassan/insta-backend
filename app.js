@@ -59,11 +59,11 @@ console.log("requestTimestamps length",requestTimestamps.length);
 
 
 
-// res.json({
-//   profile_pictures: [],
-//   message: "Data fetched successfully",
-//   success: true,
-// });
+ res.json({
+   profile_pictures: [],
+   message: "Data fetched successfully",
+   success: true,
+ });
 
 
   const { userId } = req.params; // Get the userId from the request parameters
@@ -88,7 +88,7 @@ console.log("requestTimestamps length",requestTimestamps.length);
     })
     .catch((error) => {
 
-      console.log("error",error.data);
+      console.log("error",error);
       res.json({ data: [], message: "something went wrong", success: false });
     });
 });
